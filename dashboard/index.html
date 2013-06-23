@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OONN</title>
+  <!--link rel="stylesheet" href=""-->
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="page-header">
+           <h1>OpenOpenNewsNews <small>stats on news</small></h1>
+        </div>
+    
+
+  <div class="row">
+    <div class="span4">
+      <h2>Organisations</h2>
+    </div>
+    <div class="span8">
+      {{#graph}}
+        <div class="span4">
+                <h2>{{heading}}</h2>
+                <div class="graph-template">
+                {{#bar}}
+          <style>
+            #data-{{width}} { -webkit-animation-name:bar-{{width}}; }
+            @-webkit-keyframes bar-{{width}} {
+              0% { width:0%; }
+              100% { width:{{width}}%; }
+            }
+          </style>
+            <dl style="width: 300px">
+            <dt>{{legend}}</dt>
+            <dd><div id="data-{{width}}" class="bar" style="width: {{width}}%">{{width}}%</div></dd>
+          </dl>
+          {{/bar}}
+            </div>
+          </div>
+        {{/graph}}
+      </div>          
+        </div>
+
+   <!-- <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                {{#repo}}
+              <b>{{name}}</b>
+          {{/repo}} 
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr>
+                  <td>1</td>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table> -->
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
