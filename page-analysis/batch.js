@@ -9,15 +9,15 @@ var page = require('webpage').create();
 var start = new Date().getTime();
 console.log(start);
 
-function pageOpen(p) {
+function pageOpen(p,i) {
 
     console.log("page open");
+    console.log(p[i]);
 
-    page.open(p, function() {
+    page.open(p[i], function() {
 
     	var end = new Date().getTime();
     	console.log(end);
-
 
     	page.render('test.png');
 
@@ -26,7 +26,7 @@ function pageOpen(p) {
                 console.log('jQuery included');
 
                 var x = page.evaluate(function() {
-                	var links = {};
+                	  var links = {};
                     $("a").each(function(i,a){
                     	var $a = $(a);
                     	if (links[$a.attr('href')]) links[$a.attr('href')]++
@@ -40,7 +40,11 @@ function pageOpen(p) {
                 console.log(start);
                 console.log(end);
                 console.log("response = "+(end-start)+" ms");
-                phantom.exit();
+                if (i > p.length - 1) {
+                    phantom.exit();
+                } else {
+                    pageOpen(sites,current+1);
+                }
             });
         } catch (e) {
             console.log("exception = "+e);
@@ -48,4 +52,8 @@ function pageOpen(p) {
     });
 }
 
-pageOpen('http://guardian.co.uk');
+//pageOpen('http://guardian.co.uk');
+
+var sites = ['http://guardian.co.uk', 'http://guardian.co.uk'];
+var current = 0;
+pageOpen(sites,current);

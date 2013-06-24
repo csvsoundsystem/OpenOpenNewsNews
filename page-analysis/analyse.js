@@ -48,4 +48,4 @@ function pageOpen(p) {
     });
 }
 
-pageOpen('http://guardian.co.uk');
+pageOpen('http://nytimes.com');
